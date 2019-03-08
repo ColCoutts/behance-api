@@ -1,19 +1,21 @@
 const test = QUnit.test;
+import projects from '../data/behance-data.js';
 
 QUnit.module('make template literal for html image list');
 
-export default function makeHtmlTemplate(artQuery) {
+export default function makeHtmlTemplate(artData) {
     const html = /*html*/`
         <li>
-        <h2>Illustrations for packaging design</h2>
-        <a href="https://www.behance.net/gallery/66573991/Illustrations-for-packaging-design">
-            <img src="https://mir-s3-cdn-cf.behance.net/projects/original/e3378b66573991.Y3JvcCwxMjAyLDk0MSwwLDE4MQ.jpg">
+        <h2>${artData.project.name}</h2>
+        <a href=${artData.project.url}>
+        console.log('hi');
+            <img src="${artData.project.covers}">
         </a>
 
         <h4>Keywords</h4>
-        <p>Packaging Branding Illustration</p>
+        <p>Advertising, Photography, Visual Effects</p>
         <h5>Artist</h5>
-        <p>Natalka Dmitrova</p>
+        <p>Tim Tadder</p>
         </li>
     `;
 
@@ -25,31 +27,48 @@ export default function makeHtmlTemplate(artQuery) {
 }
 
 
-test('time to write a test', function(assert) {
+test('create template structure', function(assert) {
     //arrange
-    const artQuery = {
-        name: 'Illustrations for packaging design',
-        url: 'https://www.behance.net/gallery/66573991/Illustrations-for-packaging-design',
-        covers: 'https://mir-s3-cdn-cf.behance.net/projects/original/e3378b66573991.Y3JvcCwxMjAyLDk0MSwwLDE4MQ.jpg',
-        fields: 'Packaging Branding Illustration',
-        first_name: 'Natalka',
-        last_name: 'Dmitrova',
-        id: '66573991'
-    };
-
+    const artData = projects;
+    
     //act
-    const result = makeHtmlTemplate(artQuery);
+    const result = makeHtmlTemplate(artData);
     const expected = /*html*/`
         <li>
-        <h2>Illustrations for packaging design</h2>
-        <a href="https://www.behance.net/gallery/66573991/Illustrations-for-packaging-design">
+        <h2>Water Wigs</h2>
+        <a href="http://www.behance.net/gallery/Water-Wigs/4889175">
             <img src="https://mir-s3-cdn-cf.behance.net/projects/original/e3378b66573991.Y3JvcCwxMjAyLDk0MSwwLDE4MQ.jpg">
         </a>
 
         <h4>Keywords</h4>
-        <p>Packaging Branding Illustration</p>
+        <p>Advertising, Photography, Visual Effects</p>
         <h5>Artist</h5>
-        <p>Natalka Dmitrova</p>
+        <p>Tim Tadder</p>
+        </li>
+    `;
+
+    //assert
+    assert.htmlEqual(result, expected);
+});
+
+
+test('pass in template literal holders', function(assert) {
+    //arrange
+    const artData = projects;
+    
+    //act
+    const result = makeHtmlTemplate(artData);
+    const expected = /*html*/`
+        <li>
+        <h2>Water Wigs</h2>
+        <a href="http://www.behance.net/gallery/Water-Wigs/4889175">
+            <img src="https://mir-s3-cdn-cf.behance.net/projects/original/e3378b66573991.Y3JvcCwxMjAyLDk0MSwwLDE4MQ.jpg">
+        </a>
+
+        <h4>Keywords</h4>
+        <p>Advertising, Photography, Visual Effects</p>
+        <h5>Artist</h5>
+        <p>Tim Tadder</p>
         </li>
     `;
 
