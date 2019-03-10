@@ -5,9 +5,9 @@ export default function makeHtmlTemplate(artDatas) {
         const name = artData.name;
         const url = artData.url;
         const covers = artData.covers[202];
-        console.log(covers);
         const fields = artData.fields;
-        const displayName = artData.owners.[129052].display_name;
+        console.log(fields);
+        const displayName = artData.owners;
         console.log(displayName);
         // const lastName = artData.owners.last_name;
 
@@ -27,7 +27,7 @@ export default function makeHtmlTemplate(artDatas) {
                 ${displayName.map(displayName => {
                     return /*html*/`
                     <h5>Artist</h5>
-                    <p>${displayName.display_name}</p>
+                    <p>${displayName[129052].display_name}</p>
                     </li>
                     `;
                 })}
