@@ -1,3 +1,6 @@
+
+
+
 export default function makeHtmlTemplate(artDatas) {
     const artData = artDatas.projects;
     artData.forEach(artData => {
@@ -6,8 +9,7 @@ export default function makeHtmlTemplate(artDatas) {
         const url = artData.url;
         const covers = artData.covers[202];
         const fields = artData.fields;
-        console.log(fields);
-        const displayName = artData.owners;
+        const displayName = artData;
         console.log(displayName);
         // const lastName = artData.owners.last_name;
 
