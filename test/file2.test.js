@@ -6,9 +6,21 @@ QUnit.module('test suite two');
 export function captureId(newData) {
     console.log(newData.projects.length);
     for(let i = 0; i < newData.projects.length; i++){
+        // console.log(newData.projects.owners);
+        console.log(newData.projects[i].owners[129052].display_name);
+        // let newArray = Object.keys(newData.projects[i].owners[129052]);
+        let testArray = Object.values(newData.projects[0]);
+        console.log(testArray);
+        // console.log(newArray);
+        // let newArray = [];
+        let finalResult = newData.projects[i].owners[129052].display_name;
+        return finalResult;
+
         
-        let newArray = Object.keys(newData.projects[i].owners);
-        return newArray;
+        // newArray.push(newData.projects[i].owners);
+        // console.log(newArray);
+       
+        // return newArray;
 
     }
 
