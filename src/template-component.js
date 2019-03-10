@@ -3,12 +3,12 @@ export default function makeHtmlTemplate(artDatas) {
     artData.forEach(artData => {
         console.log(artData);
         const name = artData.name;
-        console.log(name);
         const url = artData.url;
-        const covers = artData.covers.original;
+        const covers = artData.covers[202];
+        console.log(covers);
         const fields = artData.fields;
-        const firstName = artData.owners.display_name;
-        console.log(firstName);
+        const displayName = artData.owners.[129052].display_name;
+        console.log(displayName);
         // const lastName = artData.owners.last_name;
 
         const html = /*html*/`
@@ -22,11 +22,15 @@ export default function makeHtmlTemplate(artDatas) {
             ${fields.map(fields => {
                 return /*html*/`
                     <p>${fields}</p>
-                    <h5>Artist</h5>
                     `;
                 })}
-                <p>${firstName}</p>
-                </li>
+                ${displayName.map(displayName => {
+                    return /*html*/`
+                    <h5>Artist</h5>
+                    <p>${displayName.display_name}</p>
+                    </li>
+                    `;
+                })}
         `;         
         const imageList = document.getElementById('image-list');
         const template = document.createElement('template');
