@@ -27,7 +27,7 @@ export default function makeHtmlTemplate(artDatas) {
                 ${displayName.map(displayName => {
                     return /*html*/`
                     <h5>Artist</h5>
-                    <p>${displayName[129052].display_name}</p>
+                    <p>${displayName.display_name}</p>
                     </li>
                     `;
                 })}
