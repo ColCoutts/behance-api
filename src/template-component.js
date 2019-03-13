@@ -3,8 +3,6 @@ export default function makeHtmlTemplate(artDatas) {
     const artData = artDatas.projects;
     const keys = Object.keys(artData);
     const arrayOfObjects = keys.map(key => artData[key]);
-    console.log(arrayOfObjects.covers);
- 
 
     for(let i = 0; i < arrayOfObjects.length; i++){
         const userInfo = Object.entries(arrayOfObjects[i].owners);
@@ -12,8 +10,8 @@ export default function makeHtmlTemplate(artDatas) {
         const displayName = usableData.display_name;
         const url = usableData.url;
         const fields = usableData.fields;
-        const images = arrayOfObjects[i].covers.original;
-        // console.log(images);
+        const images = arrayOfObjects[i].covers[202];
+        console.log(images);
         
         const html = /*html*/`
         <li>
